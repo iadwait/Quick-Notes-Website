@@ -61,5 +61,6 @@ function showNotes() {
         displaynotesElement.innerHTML = html;
     } else {
         // Display No Notes Present
+        displaynotesElement.innerHTML = `You have no notes, Notes you Add will be Displayed Here !!!!`;
     }
 }
