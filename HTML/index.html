@@ -36,17 +36,41 @@
     </nav>
 
     <!-- Container -->
+    <!-- 
+        Bootstrap 2 important Classes
+        1.container - Leaves Left and Right Space from the div
+        2.container-fluid - Takes full space from the Parent div
+    -->
     <div class="container">
         <h1>Welcome to Quick Notes</h1>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Add a note</h5>
                 <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  </div>
-                <button class="btn btn-primary">Add note</button>
+                    <textarea class="form-control" id="txtNote" rows="3"></textarea>
+                </div>
+                <button class="btn btn-primary" id="btnAdd">Add note</button>
             </div>
+        </div>
+        <!-- Display Notes Section -->
+        <h1>Your Notes</h1>
+        <hr>
+        <!-- 
+            Class Details:-
+            row class -> Display Next div row wise
+            my-3 -> Give margin 3 at y
+            mx-3 -> Give margin 3 at x
+         -->
+        <div class="row container-fluid" id="displayNotes">
+            <!--  -->
+            <div class="card my-3 mx-3 noteCard" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Note title</h5>
+                    <p class="card-text">Some Sample note Some Sample note Some Sample note </p>
+                    <a href="#" class="btn btn-primary">Delete note</a>
+                </div>
+            </div>
+
         </div>
     </div>
 
