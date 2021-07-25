@@ -84,3 +84,30 @@ function deleteNote(index) {
     localStorage.setItem('notes',JSON.stringify(objNotes));
     showNotes();
 }
+
+// Search Functionality
+let search = document.getElementById('searchTxt');
+search.addEventListener('input',function(){
+    let searchValue = search.value;
+    // console.log('Text Entered ' + searchValue); 
+    // Get All Note Cards
+    let cardNotes = document.getElementsByClassName('noteCard');
+    Array.from(cardNotes).forEach(function(element){
+        let cardTxt = element.getElementsByTagName('p')[0].innerText;
+        // console.log(cardTxt);
+        // Check If Each Note contain Search value with Case Insensitive
+        if(cardTxt.toLowerCase().includes(searchValue.toLowerCase())){
+            element.style.display = "block";
+        } else {
+            element.style.display = "none";
+        }
+    });
+});
+
+/*
+Pending Features:-
+1. Add Title
+2. Add Button to mark a Note as Important
+3. Seperate Notes by User / Add Authentication before showing Notes
+4. Alerts - Note Added/Deleted Messages
+*/
