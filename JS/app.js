@@ -6,7 +6,8 @@ showNotes()
 let btnAdd = document.getElementById('btnAdd');
 btnAdd.addEventListener('click', function (e) {
     // console.log('Tapped');
-    // TextAre
+    // Get Title and Note Element
+    let addNoteTitle = document.getElementById('txtNoteTitle');
     let addNoteTxt = document.getElementById('txtNote');
     // Retrive Notes Key Data from Local Storage
     let notesData = localStorage.getItem('notes');
@@ -18,11 +19,18 @@ btnAdd.addEventListener('click', function (e) {
         // Parse String to get Array
         objNotes = JSON.parse(notesData);
     }
+    // Create Object with Title and Note
+    let objCurrentNote = {
+        title: addNoteTitle.value, 
+        note: addNoteTxt.value
+    }
+
     // Add New Note Data in Notes Array
-    objNotes.push(addNoteTxt.value);
+    objNotes.push(objCurrentNote);
     // Update Data in Local Storage
     localStorage.setItem('notes', JSON.stringify(objNotes));
     // Make Value of TextArea Empty because Note is Added
+    addNoteTitle.value = "";
     addNoteTxt.value = "";
     console.log(objNotes);
     showNotes();
@@ -47,8 +55,8 @@ function showNotes() {
         html += `
         <div class="card my-3 mx-3 noteCard" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Note ${index + 1}</h5>
-                    <p class="card-text">${element}</p>
+                    <h5 class="card-title">${element.title}</h5>
+                    <p class="card-text">${element.note}</p>
                     <a id="${index}" class="btn btn-primary" onclick="deleteNote(this.id)">Delete note</a>
                 </div>
             </div>
