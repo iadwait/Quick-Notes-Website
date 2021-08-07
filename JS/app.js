@@ -21,7 +21,7 @@ btnAdd.addEventListener('click', function (e) {
     }
     // Create Object with Title and Note
     let objCurrentNote = {
-        title: addNoteTitle.value, 
+        title: addNoteTitle.value,
         note: addNoteTxt.value
     }
 
@@ -87,24 +87,24 @@ function deleteNote(index) {
         objNotes = JSON.parse(notesData);
     }
     // Remove Note(index) from Array
-    objNotes.splice(index,1);
+    objNotes.splice(index, 1);
     // Update Local Storage
-    localStorage.setItem('notes',JSON.stringify(objNotes));
+    localStorage.setItem('notes', JSON.stringify(objNotes));
     showNotes();
 }
 
 // Search Functionality
 let search = document.getElementById('searchTxt');
-search.addEventListener('input',function(){
+search.addEventListener('input', function () {
     let searchValue = search.value;
     // console.log('Text Entered ' + searchValue); 
     // Get All Note Cards
     let cardNotes = document.getElementsByClassName('noteCard');
-    Array.from(cardNotes).forEach(function(element){
+    Array.from(cardNotes).forEach(function (element) {
         let cardTxt = element.getElementsByTagName('p')[0].innerText;
         // console.log(cardTxt);
         // Check If Each Note contain Search value with Case Insensitive
-        if(cardTxt.toLowerCase().includes(searchValue.toLowerCase())){
+        if (cardTxt.toLowerCase().includes(searchValue.toLowerCase())) {
             element.style.display = "block";
         } else {
             element.style.display = "none";
@@ -114,7 +114,7 @@ search.addEventListener('input',function(){
 
 /*
 Pending Features:-
-1. Add Title
+1. Add Title - Done
 2. Add Button to mark a Note as Important
 3. Seperate Notes by User / Add Authentication before showing Notes
 4. Alerts - Note Added/Deleted Messages
